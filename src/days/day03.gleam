@@ -44,13 +44,21 @@ fn solve(input: String, width: Int) -> Int {
   |> list.fold(0, int.add)
 }
 
+pub fn part1(input: String) -> Int {
+  solve(input, 2)
+}
+
+pub fn part2(input: String) -> Int {
+  solve(input, 12)
+}
+
 pub fn run() {
   let assert Ok(input) =
     simplifile.read("inputs/day03.txt")
     |> result.map(string.trim)
 
-  let res1 = solve(input, 2)
+  let res1 = part1(input)
   io.println("Part 1: " <> int.to_string(res1))
-  let res2 = solve(input, 12)
+  let res2 = part2(input)
   io.println("Part 2: " <> int.to_string(res2))
 }
