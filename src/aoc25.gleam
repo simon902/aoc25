@@ -1,13 +1,14 @@
 import argv
 import days/day01
 import days/day02
+import days/day03
 import gleam/dict
 import gleam/int
 import gleam/io
 import glint
 
 fn run_day(day: Int) {
-  let days = dict.from_list([#(1, day01.run), #(2, day02.run)])
+  let days = dict.from_list([#(1, day01.run), #(2, day02.run), #(3, day03.run)])
 
   case dict.get(days, day) {
     Ok(run_fn) -> {
