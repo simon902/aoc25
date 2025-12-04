@@ -75,33 +75,28 @@ pub fn part1(input: String) -> Int {
 }
 
 fn part2_inner(grid: Grid, num_removed: Int) -> Int {
-  let to_remove =
-    grid
-    |> dict.fold([], fn(acc, coord, elem) {
+  let initial_size = dict.size(grid)
+
+  let new_grid =
+    dict.filter(grid, fn(coord, elem) {
       case elem {
-        Paper -> {
-          let num_neighbors = count_neighbors(grid, coord)
-          case num_neighbors < 4 {
-            True -> [coord, ..acc]
-            False -> acc
-          }
-        }
-        _ -> acc
+        Paper -> count_neighbors(grid, coord) >= 4
+        _ -> True
       }
     })
 
-  case list.is_empty(to_remove) {
-    True -> num_removed
-    False -> {
-      let new_grid = dict.drop(grid, to_remove)
-      part2_inner(new_grid, num_removed + list.length(to_remove))
-    }
+  let new_size = dict.size(new_grid)
+  let diff = initial_size - new_size
+
+  case diff {
+    0 -> num_removed
+    _ -> part2_inner(new_grid, num_removed + diff)
   }
 }
 
 pub fn part2(input: String) -> Int {
-  let grid = parse_input(input)
-  part2_inner(grid, 0)
+  parse_input(input)
+  |> part2_inner(0)
 }
 
 pub fn run() {
