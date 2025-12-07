@@ -5,6 +5,7 @@ import days/day03
 import days/day04
 import days/day05
 import days/day06
+import days/day07
 import gleam/dict
 import gleam/int
 import gleam/io
@@ -19,6 +20,7 @@ fn run_day(day: Int) {
       #(4, day04.run),
       #(5, day05.run),
       #(6, day06.run),
+      #(7, day07.run),
     ])
 
   case dict.get(days, day) {
