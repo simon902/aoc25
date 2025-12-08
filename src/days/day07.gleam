@@ -1,5 +1,3 @@
-//// This
-
 import gleam/dict
 import gleam/int
 import gleam/io
