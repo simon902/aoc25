@@ -4,6 +4,7 @@ import gleam/list
 import gleam/option.{type Option, None, Some}
 import gleam/result
 import gleam/string
+import shellout
 import simplifile
 
 type Machine {
@@ -104,7 +105,27 @@ pub fn part1(input: String) -> Int {
 }
 
 pub fn part2(input: String) -> Int {
-  0
+  let result =
+    shellout.command(
+      run: "python3",
+      with: ["day10.py", input],
+      in: "external",
+      opt: [],
+    )
+
+  case result {
+    Ok(out) -> {
+      out
+      |> string.split("\n")
+      |> list.fold(0, fn(acc, res) {
+        acc + { res |> int.parse |> result.unwrap(0) }
+      })
+    }
+    Error(#(status, msg)) -> {
+      io.println(int.to_string(status) <> ": " <> msg)
+      0
+    }
+  }
 }
 
 pub fn run() {
