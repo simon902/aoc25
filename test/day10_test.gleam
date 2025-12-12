@@ -13,7 +13,6 @@ pub fn part1_test() {
 }
 
 pub fn part1_real_test() {
-  // use <- Timeout(10_000.0)
   let assert Ok(input) =
     simplifile.read("inputs/day10.txt")
     |> result.map(string.trim)
@@ -22,7 +21,7 @@ pub fn part1_real_test() {
 }
 
 pub fn part2_test() {
-  test_input |> day10.part2 |> should.equal(0)
+  test_input |> day10.part2 |> should.equal(33)
 }
 
 pub fn part2_real_test() {
@@ -30,5 +29,5 @@ pub fn part2_real_test() {
     simplifile.read("inputs/day10.txt")
     |> result.map(string.trim)
 
-  input |> day10.part2 |> should.equal(0)
+  input |> day10.part2 |> should.equal(15_631)
 }

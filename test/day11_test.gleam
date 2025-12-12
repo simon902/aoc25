@@ -20,7 +20,6 @@ pub fn part1_test() {
 }
 
 pub fn part1_real_test() {
-  // use <- Timeout(10_000.0)
   let assert Ok(input) =
     simplifile.read("inputs/day11.txt")
     |> result.map(string.trim)

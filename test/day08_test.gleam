@@ -25,17 +25,16 @@ const test_input = "162,817,812
 984,92,344
 425,690,689"
 
-// pub type Timeout {
-//   Timeout(Float, fn() -> Nil)
-// }
+pub type Timeout {
+  Timeout(Float, fn() -> Nil)
+}
 
 pub fn part1_test() {
   test_input |> day08.part1(10) |> should.equal(40)
 }
 
-// Need a trailing underscore "_" for the function name to use the Timeout
 pub fn part1_real_test() {
-  // use <- Timeout(10_000.0)
+  use <- Timeout(10_000.0)
   let assert Ok(input) =
     simplifile.read("inputs/day08.txt")
     |> result.map(string.trim)
@@ -47,9 +46,8 @@ pub fn part2_test() {
   test_input |> day08.part2 |> should.equal(25_272)
 }
 
-// Need a trailing underscore "_" for the function name to use the Timeout
 pub fn part2_real_test() {
-  // use <- Timeout(10_000.0)
+  use <- Timeout(10_000.0)
   let assert Ok(input) =
     simplifile.read("inputs/day08.txt")
     |> result.map(string.trim)
